@@ -1,0 +1,6 @@
+*.pyc
+*.JPEG
+*.jpg
+*.png
+data
+blender-2.79-windows64

@@ -1,6 +1,5 @@
 *.pyc
-*.JPEG
-*.jpg
-*.png
-data
-blender-2.79-windows64
+data/blender-off-multiview-tool/SHREC14
+data/blender-off-multiview-tool/blender-2.79b
+data/blender-off-multiview-tool/dataset_3d_model*
+data/blender-off-multiview-tool/log*

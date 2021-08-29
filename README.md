@@ -1,45 +1,37 @@
 # shrec-sketches-helpers
 
 Helper scripts for sketch-based 3D shape experiments.  
-Useful for rendering and pre-processing SHREC13, SHREC14 and PART-SHREC14 datasets.
+Useful for rendering and pre-processing SHREC14 and PART-SHREC14 datasets.
 
-## Datasets
+## 1. Datasets
+ 
+SHREC14 [[website](https://sites.usm.edu/bli/sharp/sharp/contest/2014/SBR/data.html)]
 
-SHREC 2013 [[website](http://orca.st.usm.edu/~bli/sharp/sharp/contest/2013/SBR/)]  
-SHREC 2014 [[website](http://orca.st.usm.edu/~bli/sharp/sharp/contest/2014/SBR/)]
+## 2. Image annotations
 
-## Image annotations
-
-Run [meta.py](meta.py) to create pandas dataframes for both datasets.
+Run [meta.py](meta.py) or [meta.ipynb](meta.ipynb) to create pandas dataframes for both datasets.
 There will be 2 dataframes per dataset: one for the sketches, one for the CAD models.
-Each entry in the dataframe consist of the filename path, the label and the split.
+Each entry in the dataframe consist of the filename path, the label and the split.  
 
-## Word vectors
+To get *Part-SHREC14* from origin *SHREC14*, select only those classes with more than 50 samples by following the method in *[Semantic embed-ding for sketch-based 3d shape retrieval](https://www.baidu.com/link?url=mhoLeQCnYt6kVFUKBt4Sdl_RJ7Wxm5VQKsylRyikzNNRxp2pm0H5sG34B-6y29hC2Vj719d5Pi3dti89cF_K3K&wd=&eqid=a84ca2c7001353bd00000003612b5a0a)*.
 
-Run [w2v.py](w2v.py) to get the word vector for all class names.
+## 3. Word vectors
+
+Run [w2v.py](w2v.py) or [w2v.ipynb](w2v.ipynb) to get the word vector for all class names.
 Word vectors are stored in a dictionary in a `.npz` file.
 
-It requires the gensim library:
-`conda install -c anaconda gensim`
+It requires the gensim library.
 
-## Blender 2D rendering
+## 4. Blender 2D rendering
 
-- Download Blender 2.79 [[link](https://download.blender.org/release/)]
+- Download Blender 2.79 [[link](https://download.blender.org/release/Blender2.79/)]
 - Use the Blender script from the [MVCNN](https://github.com/jongchyisu/mvcnn_pytorch) project
 [[link](http://people.cs.umass.edu/~jcsu/papers/shape_recog/render_shaded_black_bg.blend)]
-- Render 2D projections with [BlenderPhong](https://github.com/WeiTang114/BlenderPhong)
+- Render 2D projections with [BlenderPhong](https://github.com/zeaggler/ModelNet_Blender_OFF2Multiview)(448 × 448) or [phong.blend](https://github.com/zeaggler/ModelNet_Blender_OFF2Multiview/blob/master/phong.py)(224 × 224)
 
-Following the [MVCNN](http://vis-www.cs.umass.edu/mvcnn/) paper,
-render 12 views by placing the camera every 30 degrees, with an elevation of 30 degrees from the ground floor.
-This requires to modify the original [`phong.py`](https://github.com/WeiTang114/BlenderPhong/blob/master/phong.py) script.
-Check this [fork](https://github.com/twuilliam/BlenderPhong) for more info.
+It also requires the python blender package
 
-It also requires the python blender package:
-`conda install -c kitsune.one python-blender=2.79`
-
-Once everything is installed, run [render.sh](render.sh) to render the 2D views for all CAD models.
-
-## Image pre-processing
+## 5. Image pre-processing
 
 ### Sketch resizing
 
@@ -49,17 +41,3 @@ Run [resize_sk.py](resize_sk.py). Sketches will be resized to 256x256.
 
 Run [resize_cad.py](resize_cad.py).
 Images of 1024x1024 will be cropped with a margin of 100px, and resized to 256x256.
-
-## Citation
-
-If you find these scripts useful, please consider citing our paper:
-```
-@article{
-    Thong2020OpenSearch,
-    title={Open Cross-Domain Visual Search},
-    author={Thong, William and Mettes, Pascal and Snoek, Cees G.M.},
-    journal={CVIU},
-    year={2020},
-    url={https://arxiv.org/abs/1911.08621}
-}
-```

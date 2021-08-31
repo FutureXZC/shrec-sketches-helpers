@@ -9,7 +9,7 @@ SHREC14 [[website](https://sites.usm.edu/bli/sharp/sharp/contest/2014/SBR/data.h
 
 ## 2. Image annotations
 
-Run [meta.py](meta.py) or [meta.ipynb](meta.ipynb) to create pandas dataframes for both datasets.
+Run [meta.ipynb](meta.ipynb) to create pandas dataframes for both datasets.
 There will be 2 dataframes per dataset: one for the sketches, one for the CAD models.
 Each entry in the dataframe consist of the filename path, the label and the split.  
 
@@ -17,7 +17,7 @@ To get *Part-SHREC14* from origin *SHREC14*, select only those classes with more
 
 ## 3. Word vectors
 
-Run [w2v.py](w2v.py) or [w2v.ipynb](w2v.ipynb) to get the word vector for all class names.
+Run [w2v.ipynb](w2v.ipynb) to get the word vector for all class names.
 Word vectors are stored in a dictionary in a `.npz` file.
 
 It requires the gensim library.
@@ -27,17 +27,12 @@ It requires the gensim library.
 - Download Blender 2.79 [[link](https://download.blender.org/release/Blender2.79/)]
 - Use the Blender script from the [MVCNN](https://github.com/jongchyisu/mvcnn_pytorch) project
 [[link](http://people.cs.umass.edu/~jcsu/papers/shape_recog/render_shaded_black_bg.blend)]
-- Render 2D projections with [BlenderPhong](https://github.com/zeaggler/ModelNet_Blender_OFF2Multiview)(448 × 448) or [phong.blend](https://github.com/zeaggler/ModelNet_Blender_OFF2Multiview/blob/master/phong.py)(224 × 224)
+- Render 2D projections with [render_shaded_black_bg.blend](https://github.com/zeaggler/ModelNet_Blender_OFF2Multiview)(448 × 448, dark background) or [phong.blend](https://github.com/zeaggler/ModelNet_Blender_OFF2Multiview/blob/master/phong.py)(224 × 224, white background)
 
 It also requires the python blender package
 
 ## 5. Image pre-processing
 
-### Sketch resizing
+### Resizing
 
-Run [resize_sk.py](resize_sk.py). Sketches will be resized to 256x256.
-
-### 2D projection cropping and resizing
-
-Run [resize_cad.py](resize_cad.py).
-Images of 1024x1024 will be cropped with a margin of 100px, and resized to 256x256.
+Run [resize_sk.py](resize_sk.py). Sketches and 3D-view images will be resized to 224x224.

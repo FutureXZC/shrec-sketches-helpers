@@ -33,6 +33,8 @@ It also requires the python blender package
 
 ## 5. Image pre-processing
 
-### Resizing
+### Resizing and extracting edge
+
+Canny algorithm is used to extract edges.  
 
 Run [resize_and_extract_edge.py](resize_and_extract_edge.py). Sketches and 3D-view images will be resized to 224x224.

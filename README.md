@@ -35,4 +35,4 @@ It also requires the python blender package
 
 ### Resizing
 
-Run [resize_sk.py](resize_sk.py). Sketches and 3D-view images will be resized to 224x224.
+Run [resize_and_extract_edge.py](resize_and_extract_edge.py). Sketches and 3D-view images will be resized to 224x224.
